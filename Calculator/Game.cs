@@ -7,6 +7,7 @@ namespace Calculator
     class Game
     {
         bool validInput = false;
+        bool running = true;
         // Allows 2 numbers to be added together
         void CalculateAddition(float number1, float number2)
         {
@@ -30,6 +31,30 @@ namespace Calculator
             Console.Write("The answer is: ");
             Console.WriteLine(number1 * number2);
         }
+
+
+
+
+        // this is the function of going again
+        void GoAgain()
+        {
+            Console.WriteLine("if you want to keep going, type 'yes' to continue.");
+            String answer;
+            answer = Console.ReadLine();
+            if (answer == "yes" || answer == "Yes")
+            {
+                validInput = false;
+                Console.Clear();
+            }
+            else
+            {
+                running = false;
+            }
+        }
+
+
+
+
         //holds the entire calculator
         void Calculator()
         {
@@ -57,7 +82,6 @@ namespace Calculator
 
                     CalculateAddition(value1, value2);
                     Console.ReadKey();
-                    Console.Clear();
                     validInput = true;
                 }
 
@@ -76,7 +100,6 @@ namespace Calculator
 
                     CalculateSubtraction(value1, value2);
                     Console.ReadKey();
-                    Console.Clear();
                     validInput = true;
                 }
                 // divides the numbers
@@ -94,7 +117,6 @@ namespace Calculator
 
                     CalculateDivision(value1, value2);
                     Console.ReadKey();
-                    Console.Clear();
                     validInput = true;
                 }
                 //multiplies the numbers
@@ -112,7 +134,6 @@ namespace Calculator
 
                     CalculateMultiplication(value1, value2);
                     Console.ReadKey();
-                    Console.Clear();
                     validInput = true;
                 }
                 else
@@ -123,15 +144,11 @@ namespace Calculator
         }
         public void Run()
         {
-            Calculator();
-            Console.WriteLine("if you want to keep going, type 'yes' to continue.");
-            String answer;
-            answer = Console.ReadLine();
-            if (answer == "yes" || answer == "Yes")
+            while (running)
             {
-                validInput = false;
                 Calculator();
-                Console.ReadLine();
+                Console.Clear();
+                GoAgain();
             }
         }
     }
