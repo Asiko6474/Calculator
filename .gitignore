@@ -1,0 +1,8 @@
+
+.vs/Calculator/v16/
+
+Calculator/bin/Debug/netcoreapp3.1/
+
+*.json
+
+Calculator/
